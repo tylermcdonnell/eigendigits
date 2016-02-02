@@ -30,6 +30,7 @@ pause;
 
 % Apply standard PCA algorithm.
 [m, V] = pcasvd(trainImages);
+m
 
 % Prepare test images for projection.
 images = [];
