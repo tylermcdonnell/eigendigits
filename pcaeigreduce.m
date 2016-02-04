@@ -1,19 +1,26 @@
-function [ m, V ] = pcaeigreduce( A )
+function [ m, PC ] = pcaeigreduce( A )
 %HW1FINDEIGENDIGITS Summary of this function goes here
 %   Takes an (x by k) matrix A where x is the feature vector and k
 %   is the number of examples.
 
-[X, K] = size(A);
-
 % Mean normalize the input.
 [m, A] = meannormalize(A);
 
-% Compute the eigenvectors of the covariance matrix.
-[U, v] = eig(A'*A);
+% Compute eigenvectors of reduced covariance matrix.
+% The eigenvectors are the Principal Components = PC.
+[~, K] = size(A);
+[PC, V] = eig(1 / (K - 1) * (A' * A));
 
-% Extend to the larger space.
-V = A * U;
+% Expand from reduced space into full space.
+PC = A * PC;
 
+% Sort eigenvectors in descending order.
+V = diag(V);
+[~, I] = sort(-1*V);
+PC = PC(:,I);
+
+% Normalize output.
+PC = normc(PC);
 
 end
 

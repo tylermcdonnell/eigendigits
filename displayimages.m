@@ -4,9 +4,9 @@ function [ ] = displayimages( images )
 %   and M is the number of images and display the M images in subplots for
 %   convenient viewing.
 
-[~, ~, n] = size(images);
+[~, n] = size(images);
 for i = 1:n
-    subplot(n,2,i), subimage(images(:,:,i));
+    subplot(n/4,4,i), subimage(toimage(images(:,i)));
     set(gca, 'XTickLabel', '');
     set(gca, 'YTickLabel', '');
 end

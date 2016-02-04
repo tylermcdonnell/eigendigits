@@ -4,7 +4,7 @@ function [ m, A ] = meannormalize( A )
 %   value of each feature in the input matrix. Subtracts
 %   this mean vector from the features of each example.
 
-[X, K] = size(A);
+[~, K] = size(A);
 m = mean(A, 2);
 A = A - repmat(m, 1, K);
 
