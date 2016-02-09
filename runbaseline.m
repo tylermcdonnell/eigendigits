@@ -9,7 +9,6 @@ function [ a ] = runbaseline( X, XLabels, x, xLabels, K, N )
 
 correct = 0;
 for i = 1:length(xLabels)
-    i
     c = knnclassify(X(:,1:N), XLabels(:,1:N), x(:,i), K);
     if c == xLabels(:,i)
         correct = correct + 1;

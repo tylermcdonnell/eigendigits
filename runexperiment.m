@@ -16,7 +16,7 @@ thisTrainingSet = X(:,1:N);
 thisTrainingLabels = XLabels(:,1:N);
 
 % Compute eigenmatrix.
-[m, PC] = pcaeigreduce(thisTrainingSet);
+[m, PC] = pcaeig(thisTrainingSet);
 
 % Take only top T eigenvectors.
 PC = PC(:,1:T);
@@ -27,6 +27,7 @@ projectedData = PC' * thisTrainingSet;
 
 correct = 0;
 [~, tests] = size(x);
+
 for i = 1:tests
    thisTest = x(:,i);
    thisLabel = xLabels(1,i);

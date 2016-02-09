@@ -6,7 +6,7 @@ function [ ] = displayimages( images )
 
 [~, n] = size(images);
 for i = 1:n
-    subplot(n/4,4,i), subimage(toimage(images(:,i)));
+    subplot(n/5,5,i), subimage(toimage(images(:,i)));
     set(gca, 'XTickLabel', '');
     set(gca, 'YTickLabel', '');
 end
